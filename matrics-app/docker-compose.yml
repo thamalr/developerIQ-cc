@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  matrics-app:
+    build: ./matrics_gen
+    image: matrics-app
+    container_name: matrics-app
+    network_mode: host

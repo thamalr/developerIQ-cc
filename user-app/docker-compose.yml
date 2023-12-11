@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  user-app:
+    build: ./user_reg
+    image: user-app
+    container_name: user-app
+    network_mode: host

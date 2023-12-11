@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  view-app:
+    build: ./view
+    image: view-app
+    container_name: view-app
+    network_mode: host

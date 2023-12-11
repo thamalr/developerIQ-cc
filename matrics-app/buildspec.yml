@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo Building and pushing Docker images...
+      - docker-compose up -d
+      - docker ps
+
+  post_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 588089106296.dkr.ecr.ap-southeast-1.amazonaws.com
+      - echo Pushing matrics-app Docker image to ECR...
+      - docker tag matrics-app:latest 588089106296.dkr.ecr.ap-southeast-1.amazonaws.com/cc-metrics:latest
+      - docker push 588089106296.dkr.ecr.ap-southeast-1.amazonaws.com/cc-metrics:latest
